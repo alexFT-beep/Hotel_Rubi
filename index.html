@@ -9,6 +9,14 @@
     content="Hospedaje Rubí en Huarmey, Perú. Habitaciones cómodas, limpias y accesibles. WiFi gratis, agua caliente 24h y la mejor ubicación. ¡Reserva ahora por WhatsApp!">
   <meta name="keywords"
     content="hospedaje Huarmey, hotel Huarmey, alojamiento Huarmey, Hospedaje Rubí, hotel barato Huarmey, hospedaje Perú">
+  
+  <!-- Web Performance: Preconnect & Font Loading -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
+  <link rel="preconnect" href="https://www.google.com">
+
   <link rel="stylesheet" href="styles.css?v=5">
   <link rel="icon"
     href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💎</text></svg>">
@@ -85,7 +93,10 @@
   <!-- ===== HERO ===== -->
   <section class="hero" id="inicio">
     <div class="hero-bg">
-      <img src="images/hotel_hero.png" alt="Hospedaje Rubí — Fachada del hotel al atardecer" loading="eager">
+      <picture>
+        <!-- Sugerencia: Añadir source srcset="images/hotel_hero.webp" type="image/webp" aquí en el futuro -->
+        <img src="images/hotel_hero.png" alt="Hospedaje Rubí — Fachada del hotel al atardecer" fetchpriority="high" decoding="sync">
+      </picture>
     </div>
     <div class="hero-overlay"></div>
     <div class="container">
@@ -240,27 +251,27 @@
       </div>
       <div class="gallery-grid">
         <div class="gallery-item">
-          <img src="images/hotel_hero.png" alt="Fachada Hospedaje Rubí">
+          <img src="images/hotel_hero.png" alt="Fachada Hospedaje Rubí" loading="lazy" decoding="async">
           <span>Nuestra Fachada</span>
         </div>
         <div class="gallery-item">
-          <img src="images/room_comfort.png" alt="Habitación confortable">
+          <img src="images/room_comfort.png" alt="Habitación confortable" loading="lazy" decoding="async">
           <span>Habitación Doble</span>
         </div>
         <div class="gallery-item">
-          <img src="images/bathroom_service.png" alt="Baño privado">
+          <img src="images/bathroom_service.png" alt="Baño privado" loading="lazy" decoding="async">
           <span>Baño Privado</span>
         </div>
         <div class="gallery-item">
-          <img src="images/reception_service.png" alt="Recepción">
+          <img src="images/reception_service.png" alt="Recepción" loading="lazy" decoding="async">
           <span>Recepción</span>
         </div>
         <div class="gallery-item">
-          <img src="images/parking_wifi.png" alt="Estacionamiento">
+          <img src="images/parking_wifi.png" alt="Estacionamiento" loading="lazy" decoding="async">
           <span>Estacionamiento</span>
         </div>
         <div class="gallery-item">
-          <img src="images/huarmey_landscape.png" alt="Huarmey paisaje">
+          <img src="images/huarmey_landscape.png" alt="Huarmey paisaje" loading="lazy" decoding="async">
           <span>Huarmey</span>
         </div>
       </div>
@@ -476,7 +487,7 @@
     </svg>
   </a>
 
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 
 </html>
