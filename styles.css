@@ -341,6 +341,13 @@ ul { list-style: none; }
   transform: translateY(-3px);
 }
 
+.social-link:hover {
+  background: var(--orange-pastel);
+  border-color: var(--orange-pastel);
+  color: var(--brown-dark);
+  transform: translateY(-3px);
+}
+
 /* ===== SCROLL REVEAL ===== */
 .reveal {
   opacity: 0;
