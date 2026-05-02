@@ -6,8 +6,42 @@
   <title>Hospedaje Rubí — Tu hogar en Huarmey | Calidad y Confort</title>
   <meta name="description" content="Hospedaje Rubí en Huarmey, Perú. Habitaciones cómodas, limpias y accesibles. WiFi gratis, agua caliente 24h y la mejor ubicación. ¡Reserva ahora por WhatsApp!">
   <meta name="keywords" content="hospedaje Huarmey, hotel Huarmey, alojamiento Huarmey, Hospedaje Rubí, hotel barato Huarmey, hospedaje Perú">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=4">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💎</text></svg>">
+  <style>
+    /* Fuerza extrema para saltarse la caché del navegador */
+    .navbar:not(.scrolled):not(.menu-open) .nav-logo {
+      color: #ffffff !important;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.8), 0 0px 20px rgba(0,0,0,0.6) !important;
+    }
+    .navbar:not(.scrolled):not(.menu-open) .nav-links a {
+      color: #ffffff !important;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.8), 0 0px 16px rgba(0,0,0,0.6) !important;
+      font-weight: 600 !important;
+    }
+    .navbar:not(.scrolled):not(.menu-open) .nav-toggle span {
+      background: #ffffff !important;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.5) !important;
+    }
+    
+    /* Reglas para cuando se hace scroll (fondo claro -> texto marrón) */
+    .navbar.scrolled .nav-logo,
+    .navbar.menu-open .nav-logo {
+      color: #5C4A2E !important; /* var(--brown-dark) */
+      text-shadow: none !important;
+    }
+    .navbar.scrolled .nav-links a,
+    .navbar.menu-open .nav-links a {
+      color: #6B5744 !important; /* var(--text-secondary) */
+      text-shadow: none !important;
+      font-weight: 500 !important;
+    }
+    .navbar.scrolled .nav-toggle span,
+    .navbar.menu-open .nav-toggle span {
+      background: #5C4A2E !important; /* var(--brown-dark) */
+      box-shadow: none !important;
+    }
+  </style>
 </head>
 <body>
 

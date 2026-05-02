@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   navToggle.addEventListener('click', () => {
     navLinks.classList.toggle('active');
+    navbar.classList.toggle('menu-open', navLinks.classList.contains('active'));
     const spans = navToggle.querySelectorAll('span');
     if (navLinks.classList.contains('active')) {
       spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
@@ -31,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
   navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       navLinks.classList.remove('active');
+      navbar.classList.remove('menu-open');
       const spans = navToggle.querySelectorAll('span');
       spans[0].style.transform = '';
       spans[1].style.opacity = '';
