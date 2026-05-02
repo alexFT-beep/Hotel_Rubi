@@ -15,17 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   navToggle.addEventListener('click', () => {
     navLinks.classList.toggle('active');
+    navToggle.classList.toggle('active');
     navbar.classList.toggle('menu-open', navLinks.classList.contains('active'));
-    const spans = navToggle.querySelectorAll('span');
-    if (navLinks.classList.contains('active')) {
-      spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-      spans[1].style.opacity = '0';
-      spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
-    } else {
-      spans[0].style.transform = '';
-      spans[1].style.opacity = '';
-      spans[2].style.transform = '';
-    }
   });
 
   // Close menu when clicking a link
