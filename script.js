@@ -165,39 +165,58 @@
       }, { passive: true });
 
       // Mouse parallax para shapes
+      let mouseTicking = false;
       document.addEventListener('mousemove', (e) => {
         if (window.innerWidth < 768) return;
-        const x = (e.clientX / window.innerWidth - 0.5) * 2;
-        const y = (e.clientY / window.innerHeight - 0.5) * 2;
-        
-        shapes.forEach((s, idx) => {
-          const speed = (idx + 1) * 12;
-          s.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
-        });
-      });
+        if (!mouseTicking) {
+          window.requestAnimationFrame(() => {
+            const x = (e.clientX / window.innerWidth - 0.5) * 2;
+            const y = (e.clientY / window.innerHeight - 0.5) * 2;
+            
+            shapes.forEach((s, idx) => {
+              const speed = (idx + 1) * 12;
+              s.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+            });
+            mouseTicking = false;
+          });
+          mouseTicking = true;
+        }
+      }, { passive: true });
     }
 
     initCards3D() {
       const cards = document.querySelectorAll('.service-card');
       
       cards.forEach(c => {
+        let rect;
+        let ticking = false;
+        c.addEventListener('mouseenter', () => {
+          if (window.innerWidth >= 768) rect = c.getBoundingClientRect();
+        }, { passive: true });
+
         c.addEventListener('mousemove', (e) => {
-          if (window.innerWidth < 768) return;
-          const rect = c.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          const cx = rect.width / 2;
-          const cy = rect.height / 2;
-          
-          const rotX = (y - cy) / cy * -8;
-          const rotY = (x - cx) / cx * 8;
-          
-          c.style.transform = `perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale3d(1.03, 1.03, 1.03)`;
-        });
+          if (window.innerWidth < 768 || !rect) return;
+          if (!ticking) {
+            window.requestAnimationFrame(() => {
+              const x = e.clientX - rect.left;
+              const y = e.clientY - rect.top;
+              const cx = rect.width / 2;
+              const cy = rect.height / 2;
+              
+              const rotX = (y - cy) / cy * -8;
+              const rotY = (x - cx) / cx * 8;
+              
+              c.style.transform = `perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale3d(1.03, 1.03, 1.03)`;
+              ticking = false;
+            });
+            ticking = true;
+          }
+        }, { passive: true });
 
         c.addEventListener('mouseleave', () => {
           c.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-        });
+          rect = null;
+        }, { passive: true });
       });
     }
   }
